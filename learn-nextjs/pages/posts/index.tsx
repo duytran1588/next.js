@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPropsContext } from 'next';
+import Link from 'next/link';
 import * as React from 'react';
 
 export interface PostListPageProps {
@@ -11,7 +12,11 @@ export default function PostListPage({ posts }: PostListPageProps) {
 			<h1>Post List Page</h1>
 			<ul>
 				{posts.map((post) => (
-					<li key={post.id}>{post.title}</li>
+					<li key={post.id}>
+						<Link href={`/posts/${post.id}`}>
+							<a>{post.title}</a>
+						</Link>
+					</li>
 				))}
 			</ul>
 		</div>
@@ -36,7 +41,7 @@ export const getStaticProps: GetStaticProps<PostListPageProps> = async (
 	//fetch API
 	const response = await fetch('https://js-post-api.herokuapp.com/api/posts?_page=1');
 	const data = await response.json();
-	console.log('data', data); //this appears on server if (run build)
+	// console.log('data', data); //this appears on server if (run build)
 
 	//user just request id and title but server returns too much data, so need map to filter two props: id and title
 	return {
