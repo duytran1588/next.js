@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<PostListPageProps> = async (
 	 */
 	console.log('static props'); //this not appear on client side
 
-	//fetch API
+	//fetch API on server
 	const response = await fetch('https://js-post-api.herokuapp.com/api/posts?_page=1');
 	const data = await response.json();
 	// console.log('data', data); //this appears on server if (run build)
