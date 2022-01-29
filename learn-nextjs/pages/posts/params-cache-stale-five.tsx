@@ -10,7 +10,7 @@ export interface ParamsPageProps {
 export default function ParamsPage({ query, post }: ParamsPageProps) {
 	const router = useRouter();
 	const [seconds, setSeconds] = useState(0);
-	console.log('query', query);
+
 
 	useEffect(() => {
 		//assign and run intervalid at the same time (with setInterval function)
