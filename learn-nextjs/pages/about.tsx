@@ -16,6 +16,7 @@ export default function AboutPage(props: AboutPageProps) {
 
 	//to fetch data just on client side, use useEffect (useEffect just run on client)
 	useEffect(() => {
+		// console.log('useEffect')
 		if (!page) return;
 		(async () => {
 			const response = await fetch(`https://js-post-api.herokuapp.com/api/posts?_page=${page}`);
@@ -33,7 +34,7 @@ export default function AboutPage(props: AboutPageProps) {
 				},
 			},
 			undefined,
-			{ shallow: true }
+			{ shallow: true } //not allow to update on server when change page
 		);
 	};
 
