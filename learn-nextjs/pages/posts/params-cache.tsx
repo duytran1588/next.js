@@ -10,7 +10,7 @@ export interface ParamsPageProps {
 export default function ParamsPage({ query, post }: ParamsPageProps) {
 	const router = useRouter();
 	const [seconds, setSeconds] = useState(0);
-	console.log('query', query);
+  console.log('post', post)
 
 	useEffect(() => {
 		//assign and run intervalid at the same time (with setInterval function)
@@ -36,7 +36,7 @@ export default function ParamsPage({ query, post }: ParamsPageProps) {
 	);
 }
 
-export async function getServerSiderProps(context: GetServerSidePropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
 	context.res.setHeader('Cache-Control', 's-maxage=5');
 
 	await new Promise((res) => setTimeout(res, 3000));
