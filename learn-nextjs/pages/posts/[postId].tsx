@@ -9,6 +9,11 @@ export interface PostPageProps {
 export default function PostDetailPage({ post }: PostPageProps) {
 	const router = useRouter();
 
+	//use it for fallback: true, to show loading when waiting for getStaticProps running to return new page
+	if (router.isFallback) {
+		return <div style={{ fontSize: '2rem', textAlign: 'center' }}>Loading...</div>;
+	}
+
 	if (!post) return null;
 	return (
 		<div>
@@ -40,15 +45,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		// 		params: { postId: '4' },
 		// 	},
 		// ],
+
+		//the number of items prop paths has, the number of time getStaticProps is called and generates the same number of HTML detail pages
 		paths: data.data.map((post: any) => ({ params: { postId: post.id } })),
-		fallback: false, //if postId is not matched -> redirect to the not found page
+		// fallback: false, //if postId is not matched -> redirect to the not found page
+
+		//if in posts/index.tsx, we change page=2 (postId is not stored in cache in advance) in fetch function, test fallback: 'blocking' to see the result
+		// fallback: 'blocking',
+
+		//because with fallback: 'blocking', the page seems not to be changed in the running time, the page is just absolutely changed after running completely, so it's not good for the UI cause user don't know if it is changing or not
+		//try to use fallback: 'true',
+		fallback: true,
 	};
 };
 
 export const getStaticProps: GetStaticProps<PostPageProps> = async (
 	context: GetStaticPropsContext
 ) => {
-	console.log('GET Static props', context.params?.postId);
 	const postId = context.params?.postId;
 	//fetch API
 	if (!postId) return { notFound: true };
@@ -61,5 +74,6 @@ export const getStaticProps: GetStaticProps<PostPageProps> = async (
 		props: {
 			post: data,
 		},
+		revalidate: 5, //used for ISR
 	};
 };
