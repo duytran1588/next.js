@@ -42,6 +42,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	await new Promise((res) => setTimeout(res, 3000));
 
 	const postId = context.query.postId;
+	console.log('postId', postId);
+
 	if (!postId) return { props: { query: context.query } };
 
 	const response: any = fetch(`https://js-post-api.herokuapp.com/api/posts/${postId}`);
