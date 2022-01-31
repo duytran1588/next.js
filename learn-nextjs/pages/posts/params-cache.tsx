@@ -20,7 +20,7 @@ export default function ParamsPage({ query, post }: ParamsPageProps) {
 				return x + 1;
 			});
 		}, 1000);
-		return () => clearInterval(intervalId);
+		return () => clearInterval(intervalId); //clean up of useEffect
 	}, []);
 	return (
 		<div>
