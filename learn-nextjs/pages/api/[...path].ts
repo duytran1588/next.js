@@ -8,7 +8,8 @@ import httpProxy from 'http-proxy';
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: false, //nextJS automatically make bodyParser: true, but we just need it to pass request to api server, 
+    // config bodyParser: false 
   },
 }
 
