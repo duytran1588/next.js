@@ -31,6 +31,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 
 			proxyRes.on('data', function (chunk) {
 				body += chunk;
+				console.log('body', body)
 			});
 
 			proxyRes.on('end', function () {
