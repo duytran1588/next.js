@@ -59,10 +59,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 		//when receive response, call handleLoginResponse
 		proxy.once('proxyRes', handleLoginResponse);
 
+		//forward request to api server asking for response
 		proxy.web(req, res, {
-			target: process.env.API_URL,
+			target: process.env.API_URL, //send request to url of api server
 			changeOrigin: true,
-			selfHandleResponse: true, //in login feature, we want to handle the returned response => true
+			selfHandleResponse: true, //in login feature, we want to handle the returned response by ourselves => true
 		});
 	});
 }

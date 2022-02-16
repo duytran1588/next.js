@@ -1,10 +1,11 @@
-import * as React from 'react';
-import { authApi } from '@/api/index';
 import { useAuth } from '@/hooks/index';
+import { useRouter } from 'next/router';
+import * as React from 'react';
 
 export interface LoginPageProps {}
 
 export default function LoginPage() {
+	const router = useRouter();
 	const { profile, login, logout } = useAuth({
 		revalidateOnMount: false, //don't want to request api get profile for the first time because there is no token on cookies yet, need to login first
 	});
@@ -13,6 +14,7 @@ export default function LoginPage() {
 		try {
 			await login();
 			console.log('redirect to dashboard');
+			router.push('/about');
 		} catch (error) {
 			console.log('failed to login', error);
 		}
@@ -38,8 +40,15 @@ export default function LoginPage() {
 			<h1>Login Page</h1>
 			<p>Profile: {JSON.stringify(profile || {}, null, 4)}</p>
 			<button onClick={handleLoginClick}>Login</button>
-			<button onClick={handleGetProfileClick}>Get Profile</button>
+			{/* <button onClick={handleGetProfileClick}>Get Profile</button> */}
 			<button onClick={handleLogoutClick}>Logout</button>
+			<button
+				onClick={() => {
+					router.push('/about');
+				}}
+			>
+				Go to About
+			</button>
 		</div>
 	);
 }
