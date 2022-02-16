@@ -14,6 +14,15 @@ export function StudentDetail({ studentId }: StudentDetailProps) {
 	 * called 3 times but, useSWR recognize that there is only one key `/students/${studentId}` in useSWR => useSWR will only perform once
 	 */
 	const { data, error, mutate, isValidating } = useSWR(`/students/${studentId}`, {
+
+		/**
+		 * How do we know useSWR will return this object { data, error, mutate, isValidating } ? check docs in https://swr.vercel.app/docs/options
+		 * we have useSWR(key, fetcher, options)
+		 * 	-if key is already an api url => fetcher is optional cause we already set it in the value of SWRConfig in _app.tsx
+		 * 	-if key is simply a string => we need to define fetcher telling what we need to do with the key argument
+		 * 	-options is optional which are defined in https://swr.vercel.app/docs/options
+		 */
+
 		revalidateOnFocus: false,
 		dedupingInterval: MILISECOND_PER_HOUR,
 		// dedupingInterval: 2000,//in 2s, no matter how many requests called, swr just perform one request
