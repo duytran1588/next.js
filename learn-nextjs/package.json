@@ -8,6 +8,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.7.1",
+    "@emotion/react": "^11.7.1",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.4.2",
+    "@mui/material": "^5.4.2",
     "@types/http-proxy": "^1.17.8",
     "axios": "^0.25.0",
     "cookies": "^0.8.0",

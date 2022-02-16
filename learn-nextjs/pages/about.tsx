@@ -1,5 +1,6 @@
 // import Header from '@/components/common/header';
 import { AdminLayout } from '@/components/layout';
+import { Box, Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -40,8 +41,13 @@ export default function AboutPage(props: AboutPageProps) {
 	};
 
 	return (
-		<div>
-			<h1>About page</h1>
+		<Box>
+			<h1></h1>
+			{/* variant means style, component is h1 but style is h3 */} 
+			{/* color is got from theme.ts */}
+			<Typography component="h1" variant="h3" color="primary.main">
+				About page
+			</Typography>
 			<Header />
 
 			<ul className="post-list">
@@ -50,11 +56,11 @@ export default function AboutPage(props: AboutPageProps) {
 				))}
 			</ul>
 			<button onClick={handleNextClick}>Next page</button>
-		</div>
+		</Box>
 	);
 }
 
-AboutPage.Layout = AdminLayout
+AboutPage.Layout = AdminLayout;
 
 export async function getStaticProps() {
 	//in dev mode, getStaticProps is called for each request-in this case, only Client is allowed to handle change next page, use shallow to trigger update on client
