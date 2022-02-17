@@ -40,10 +40,10 @@ export function Auth({ children }: AuthProps) {
  * 	- Because we are not logged in yet, so firstLoading = true
  * 	- console.log('firstLoading', true)
  * 	- console.log('test useEffect 2')
- * 	- useAuth make component rerender after receive the result from api, so it will continue to run as below:
- * 	- console.log('test useEffect')
- * 	- Again in useAuth(), api get profile will be requested
- * 	- Because we are not logged in yet, so firstLoading = profile === undefined (true) && error !== undefined (false) (this time error has a string value)
+ *
+ * 	- After asynchronus function in use-auth.ts handled, the firstLoading is change
+ * 	- firstLoading is an argument in dependencies, so its value changes makes useEffect retrigger, component will be rerendered
+ * 	- console.log('test useEffect)
  * 	- console.log('firstLoading', false)
- *  - firstLoading change value so useEffect is triggered, the if condition is true, so user is pushed to login page
- */
+ * 	- console.log('test useEffect 2')
+ **/

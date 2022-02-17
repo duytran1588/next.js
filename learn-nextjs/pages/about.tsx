@@ -12,8 +12,7 @@ export interface AboutPageProps {}
 
 export default function AboutPage(props: AboutPageProps) {
 	const [postList, setPostList] = useState([]);
-	const router = useRouter();
-	console.log('About query: ', router.query);
+	const router = useRouter();	
 	const page = router.query?.page;
 
 	//to fetch data just on client side, use useEffect (useEffect just run on client)
