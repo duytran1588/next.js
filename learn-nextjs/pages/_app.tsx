@@ -12,20 +12,17 @@ import '../styles/globals.css';
 const clientSideEmotionCache = createEmotionCache();
 
 function MyApp({
-	Component,
+	Component, //Component maybe about, login, index page...
 	pageProps,
 	emotionCache = clientSideEmotionCache,
 }: AppPropsWithLayout) {
-	//Component maybe about, login, index page...
-	console.log('app-rerender');
-
 	const Layout = Component.Layout ?? EmptyLayout; //if Component.Layout is undefined => EmptyLayout is rendered
 
 	return (
 		<CacheProvider value={emotionCache}>
 			<ThemeProvider theme={theme}>
 				{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-				<CssBaseline/>
+				<CssBaseline />
 				{/* https://swr.vercel.app/docs/global-configuration - global config for swr */}
 				<SWRConfig value={{ fetcher: (url) => axiosClient.get(url), shouldRetryOnError: false }}>
 					{/* shouldRetryOnError: if api request is failed -> should not retry => shouldRetryOnError: false */}
