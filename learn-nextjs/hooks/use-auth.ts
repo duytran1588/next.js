@@ -3,7 +3,7 @@ import { PublicConfiguration } from 'swr/dist/types';
 import { authApi } from '@/api/index';
 
 export function useAuth(options?: Partial<PublicConfiguration>) {
-	console.log('useAuth')
+
 	//profile
 	const {
 		data: profile, //change name of prop data to profile
