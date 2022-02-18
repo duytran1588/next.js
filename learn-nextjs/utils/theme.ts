@@ -18,6 +18,9 @@ export let theme = createTheme({
 		error: {
 			main: red.A400,
 		},
+		text: {
+			primary: '#21243D',
+		}
 	},
 	//to know this, visit https://mui.com/customization/theme-components/#global-style-overrides
 	components: {
