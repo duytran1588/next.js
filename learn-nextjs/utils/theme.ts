@@ -51,7 +51,7 @@ export const theme = createTheme({
 				//according to css rule: root means MuiLink-root
 				root: {
 					color: 'black',
-					'&:hover': {
+					'&:hover, &.active': {
 						color: '#FF6464',
 					},
 				},
