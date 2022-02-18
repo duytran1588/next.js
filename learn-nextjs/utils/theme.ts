@@ -12,6 +12,7 @@ export const theme = createTheme({
 			main: '#FF6464',
 		},
 		secondary: {
+			light: '#EDF7FA',
 			main: '#00ABCC',
 		},
 		error: {
@@ -59,6 +60,24 @@ export const theme = createTheme({
 					},
 				},
 			},
+		},
+		MuiButton: {
+			//styleOverrides is ok but try variants
+			// styleOverrides: {
+			// 	root: {
+			// 		color: 'white',
+			// 	},
+			// },
+
+			//https://mui.com/customization/theme-components/#global-style-overrides
+			variants: [
+				{
+					props: { variant: 'contained', color: 'primary' },
+					style: {
+						color: 'white',
+					},
+				},
+			],
 		},
 	},
 });
