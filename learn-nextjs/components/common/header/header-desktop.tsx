@@ -17,7 +17,10 @@ export function HeaderDesktop() {
 				<Stack direction="row" justifyContent="flex-end">
 					{ROUTE_LIST.map((route) => (
 						<Link href={route.path} key={route.path} passHref>
-							<MuiLink sx={{ ml: 2 }} className={clsx({ active: router.pathname === route.path })}>
+							<MuiLink
+								sx={{ ml: 2, fontWeight: 'medium' }}
+								className={clsx({ active: router.pathname === route.path })}
+							>
 								{/* if router.pathname === route.path => className='active' */}
 								{route.label}
 							</MuiLink>

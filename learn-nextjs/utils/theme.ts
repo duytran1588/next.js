@@ -3,6 +3,9 @@ import { red } from '@mui/material/colors';
 
 // Create a theme instance.
 export const theme = createTheme({
+	typography: {
+		fontFamily: 'Heebo, sans-serif',
+	},
 	//visit this page for more view https://mui.com/customization/default-theme/
 	palette: {
 		primary: {
