@@ -41,5 +41,21 @@ export const theme = createTheme({
 			},
 			variants: [],
 		},
+		MuiLink: {
+			//https://mui.com/api/link/
+			defaultProps: {
+				//each link underline is only decorated when hovered
+				underline: 'none',
+			},
+			styleOverrides: {
+				//according to css rule: root means MuiLink-root
+				root: {
+					color: 'black',
+					'&:hover': {
+						color: '#FF6464',
+					},
+				},
+			},
+		},
 	},
 });
