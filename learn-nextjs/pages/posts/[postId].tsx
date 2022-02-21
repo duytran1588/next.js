@@ -59,10 +59,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	};
 };
 
+// Note: The number of paths generated, the number of time getStaticProps runs
 export const getStaticProps: GetStaticProps<PostPageProps> = async (
-	context: GetStaticPropsContext
+	context: GetStaticPropsContext 
+		// context here is every item of 
+		// paths: [
+		// 	{
+		// 		params: { postId: '1' },
+		// 	},
+		// 	{
+		// 		params: { postId: '2' },
+		// 	},
+		// 	{
+		// 		params: { postId: '3' },
+		// 	},
+		// 	{
+		// 		params: { postId: '4' },
+		// 	},
+		// ],
 ) => {
-	const postId = context.params?.postId;
+	const postId = context.params?.postId; //params is optional
 	//fetch API
 	if (!postId) return { notFound: true };
 
