@@ -1,4 +1,5 @@
 // import Header from '@/components/common/header';
+import { Header } from '@/components/common';
 import { AdminLayout } from '@/components/layout';
 import { Box, Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
@@ -6,7 +7,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 //Header is just allowed to render in client, not in server, using this code line
-const Header = dynamic(() => import('@/components/common/header'), { ssr: true });
+// const Header = dynamic(() => import('@/components/common/header'), { ssr: true });
 
 export interface AboutPageProps {}
 
